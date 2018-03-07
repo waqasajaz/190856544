@@ -1,0 +1,47 @@
+<fm-header></fm-header>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <button type="button" class="btn btn-primary float-right" (click)="openAddNewDlg(newWayPoint)">Add+</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div><h4 class="modal-title">Waypoints</h4></div>
+      <fm-waypoints-list
+        (dispatch)="dispatchDriver($event)"
+        [waypoints]="waypoints"
+      ></fm-waypoints-list>
+    </div>
+  </div>
+</div>
+
+<ng-template #newWayPoint let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add waypoint</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <fm-waypoint-new
+      (saved)="waypointSave($event)"
+    ></fm-waypoint-new>
+  </div>
+</ng-template>
+
+
+<ng-template #dispatchTourDlg let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Dispatch Driver</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <fm-driver-dispatch></fm-driver-dispatch>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Dispatch</button>
+      </div>
+  </ng-template>

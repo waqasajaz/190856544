@@ -1,0 +1,10 @@
+<ul class="list-group tours-list">
+  <li *ngFor="let tour of tours" class="list-group-item clickable">
+    <span>{{tour.name}}</span>
+    <div class="float-right">
+      <span class="oi oi-pencil clickable mr-1" (click)="doEdit(tour)"></span>
+      <span class="oi oi-x clickable" (click)="doDelete(tour)"></span>
+      <span class="oi oi-location clickable" (click)="doDispatch(tour)"></span>
+    </div>
+  </li>
+</ul>

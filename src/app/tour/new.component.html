@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-6">
+    <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+      <agm-marker
+        *ngFor="let m of markers; let i = index"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [label]="m.label"
+        [markerDraggable]="false">
+        <agm-info-window>
+          <strong>{{m.name}}</strong>
+          <hr/>
+          <span (click)="removeMarker(i)" class="clickable link">Remove it</span>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+    <form>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <input [(ngModel)]="tourName" name="tourName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name">
+            <small id="emailHelp" class="form-text text-muted">An easy to find name to search it in future</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary float-right" (click)="saveTour()">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-6">
+    <div class="row">
+      <div class="col-12"><h5>Select Waypoints</h5></div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <fm-waypoints-list
+          [waypoints]="waypoints"
+          [selectedable]="true"
+          (itemSelected)="wayPointSelected($event)"
+          [selected]="_tour.waypoints"
+          [options]="false"
+        ></fm-waypoints-list>
+      </div>
+    </div>
+  </div>
+</div>
+

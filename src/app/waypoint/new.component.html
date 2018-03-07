@@ -1,0 +1,27 @@
+<div>
+  <small id="emailHelp" class="form-text text-muted">Move marker to select location</small>
+</div>
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker
+    [latitude]="lat"
+    [longitude]="lng"
+    [markerDraggable]="true"
+    (dragEnd)="locationSelected($event)"
+  ></agm-marker>
+</agm-map>
+<form>
+  <div class="row p-1">
+    <div class="col-12">
+      <div class="form-group">
+        <input [(ngModel)]="waypointName" name="waypointName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+        <small id="emailHelp" class="form-text text-muted">Name it to find it easily during search</small>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+        <button type="button" class="btn btn-primary float-right" (click)="saveWaypoint()">Save</button>
+    </div>
+  </div>
+</form>
+

@@ -1,0 +1,9 @@
+<ul class="list-group drivers-list">
+  <li *ngFor="let driver of drivers"
+    class="list-group-item clickable"
+    (click)="driver.selected = !driver.selected"
+    [ngClass]="{'selected': driver.selected}"
+    >
+    <span>{{driver.name}}</span>
+  </li>
+</ul>

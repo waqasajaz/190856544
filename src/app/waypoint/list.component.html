@@ -1,0 +1,15 @@
+<ul class="list-group waypoint-list">
+  <li
+    *ngFor="let waypoint of _waypoints"
+    class="list-group-item"
+    (click)="itemClicked(waypoint)"
+    [ngClass]="{'selected' : waypoint.selected}"
+    >
+    <span>{{waypoint.name}}</span>
+    <div class="float-right" *ngIf="_options">
+        <span class="oi oi-pencil clickable mr-1"></span>
+        <span class="oi oi-x clickable" (click)="doDelete(waypoint)"></span>
+        <span class="oi oi-location clickable" (click)="doDispatch(waypoint)"></span>
+      </div>
+  </li>
+</ul>

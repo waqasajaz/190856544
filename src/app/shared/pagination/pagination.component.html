@@ -1,0 +1,37 @@
+<nav aria-label="Page navigation example" class="pull-right">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+      <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item ">
+        <a (click)="setPage(1)" class="page-link" tabindex="-1">First</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item ">
+        <a (click)="setPage(pager.currentPage - 1)" class="page-link" tabindex="-1">Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item">
+        <a (click)="setPage(page)" class="page-link">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+        <a (click)="setPage(pager.currentPage + 1)" class="page-link" tabindex="-1" >Next</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+        <a (click)="setPage(pager.totalPages)" class="page-link" tabindex="-1">Last</a>
+      </li>
+    </ul>
+  </nav>
+  <!--
+<nav [hidden]="!isVisible">
+  <ul class="pagination">
+    <li [class.disabled]="!previousEnabled" (click)="previousNext(-1, $event)">
+      <a aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li *ngFor="let page of pages" (click)="changePage(page, $event)" [class.active]="currentPage === page">
+      <a>{{ page }}</a>
+    </li>
+    <li [class.disabled]="!nextEnabled" (click)="previousNext(1, $event)">
+      <a aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->
